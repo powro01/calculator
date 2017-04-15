@@ -16,13 +16,26 @@ $(document).ready(function() {
                 //clear display
                 $('#display').text("");
                 firstValue = [];
+            } else if(value === "DEL") {
 
-            } else {
-                firstValue.push(value);
-                var display = firstValue.join('');
-                
-                $('#display').text(display);
+                //delete last char
+                firstValue[0] = firstValue[0].substr((firstValue[0].length - 1), 1);
+                $("#display").text(firstValue[0]);
+
+                console.log(firstValue[0].length);
+                console.log(firstValue[0]);
+
             }
+            
+            else {
+            
+            firstValue.push(value);
+            var display = firstValue.join('');
+            
+            $('#display').text(display);
+
+            }
+            
 
         });
     }
