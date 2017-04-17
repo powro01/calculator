@@ -6,38 +6,45 @@ $(document).ready(function() {
     var operatorSet = false;
     //click event
     
-    if(!operatorSet) {
-        $('.button').on('click', function(e) {
+    $('.button').on('click', function() {
 
-            var value = $(this).text();
-            
-            if(value === "AC") {
+        var value = $(this).text();
 
-                //clear display
-                $('#display').text("");
-                firstValue = [];
-            } else if(value === "DEL") {
-
-                //delete last char
-                firstValue[0] = firstValue[0].substr((firstValue[0].length - 1), 1);
-                $("#display").text(firstValue[0]);
-
-                console.log(firstValue[0].length);
-                console.log(firstValue[0]);
-
+        if(value === "AC") {
+            //clear display and values arrays
+            $('#display').text("");
+            firstValue = [];
+            secondValue = [];
+        }
+        else if(value === "DEL") {
+            if(!operatorSet) {
+                //deleting last value in first array
+                let remove = firstValue.pop();
+                let display = firstValue.join('');
+                $('#display').text(display);
+            } else {
+                //deleting from second array
+                let remove = secondValue.pop();
+                let display = secondValue.join('');
+                $('#display').text(display);
             }
-            
-            else {
-            
-            firstValue.push(value);
-            var display = firstValue.join('');
-            
-            $('#display').text(display);
-
+        }
+        else {
+            if(!operatorSet) {
+                //get value to first array and show it on display
+                firstValue.push(value);
+                let display = firstValue.join('');
+                $('#display').text(display);
+            } else {
+                //get value to second array
+                secondValue.push(value);
+                let display = secondValue.join('');
+                $('#display').text(display);
             }
-            
+        }
 
-        });
-    }
+        
+
+    });
 
 });
