@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     var firstValue = [];
     var secondValue = [];
-    var operators = ['AC', '/', 'X', '-', '+', 'DEL'];
+    var operators = ['/', 'X', '-', '%', '+', 'sqrt'];
     var operatorSet = false;
     //click event
     
@@ -43,7 +43,10 @@ $(document).ready(function() {
             }
         }
 
-        
+        //iterate operators 
+        for(let i = 0; i < operators.length; i++) {
+            console.log(operators[i]);
+        }
 
     });
 
